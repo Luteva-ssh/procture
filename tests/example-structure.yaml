@@ -1,0 +1,211 @@
+# Example 1: Basic Nim Project
+nim_project:
+  src:
+    - main.nim
+    - config.nim
+    utils:
+      - helper.nim
+      - parser.nim
+  tests:
+    - test_main.nim
+    - test_utils.nim
+  bin:
+    - my_app
+  - README.md
+  - my_project.nimble
+  - .gitignore
+
+---
+
+# Example 2: Web Application
+web_app:
+  frontend:
+    src:
+      components:
+        - Header.js
+        - Footer.js
+        - Navigation.js
+      pages:
+        - Home.js
+        - About.js
+        - Contact.js
+      - App.js
+      - index.js
+    public:
+      images:
+        - logo.png
+        - favicon.ico
+      - index.html
+    - package.json
+  backend:
+    src:
+      routes:
+        - users.nim
+        - api.nim
+      models:
+        - user.nim
+        - database.nim
+      - server.nim
+    - backend.nimble
+  - README.md
+  - docker-compose.yml
+
+---
+
+# Example 3: Library Project
+my_library:
+  src:
+    my_library:
+      - core.nim
+      - types.nim
+      - utils.nim
+    - my_library.nim
+  tests:
+    - test_core.nim
+    - test_types.nim
+    - test_integration.nim
+  examples:
+    - basic_usage.nim
+    - advanced_usage.nim
+  docs:
+    - api.md
+    - tutorial.md
+    images:
+      - diagram.png
+  bench:
+    - benchmark.nim
+  - README.md
+  - LICENSE
+  - my_library.nimble
+  - .github:
+    workflows:
+      - ci.yml
+
+---
+
+# Example 4: Microservice Architecture
+microservices:
+  user_service:
+    src:
+      - main.nim
+      - routes.nim
+      - models.nim
+    - Dockerfile
+    - user_service.nimble
+  product_service:
+    src:
+      - main.nim
+      - routes.nim
+      - models.nim
+    - Dockerfile
+    - product_service.nimble
+  order_service:
+    src:
+      - main.nim
+      - routes.nim
+      - models.nim
+    - Dockerfile
+    - order_service.nimble
+  shared:
+    - common.nim
+    - database.nim
+  docker:
+    - docker-compose.yml
+    - docker-compose.dev.yml
+  k8s:
+    - deployment.yaml
+    - service.yaml
+    - ingress.yaml
+  - README.md
+  - .env.example
+
+---
+
+# Example 5: Game Development Project
+game_project:
+  src:
+    engine:
+      - renderer.nim
+      - physics.nim
+      - audio.nim
+    game:
+      - player.nim
+      - enemies.nim
+      - world.nim
+    - main.nim
+  assets:
+    sprites:
+      - player.png
+      - enemy.png
+    sounds:
+      - jump.wav
+      - music.ogg
+    levels:
+      - level1.json
+      - level2.json
+  tools:
+    - level_editor.nim
+    - asset_packer.nim
+  tests:
+    - test_engine.nim
+    - test_game.nim
+  - README.md
+  - game.nimble
+
+---
+
+# Example 6: Data Science Project
+data_project:
+  data:
+    raw:
+      - dataset1.csv
+      - dataset2.json
+    processed:
+      - clean_data.csv
+    external:
+  src:
+    - data_loader.nim
+    - preprocessor.nim
+    - analyzer.nim
+    - visualizer.nim
+    models:
+      - linear_model.nim
+      - neural_net.nim
+  notebooks:
+    - exploration.ipynb
+    - analysis.ipynb
+  scripts:
+    - download_data.nim
+    - train_model.nim
+  results:
+    figures:
+    models:
+  - README.md
+  - requirements.txt
+
+---
+
+# Example 7: CLI Tool Project
+cli_tool:
+  src:
+    commands:
+      - create.nim
+      - build.nim
+      - deploy.nim
+    - main.nim
+    - config.nim
+    - utils.nim
+  tests:
+    - test_commands.nim
+    - test_config.nim
+  docs:
+    - user_guide.md
+    - api_reference.md
+  examples:
+    - basic_example.nim
+  scripts:
+    - install.sh
+    - build.sh
+  - README.md
+  - cli_tool.nimble
+  - LICENSE
