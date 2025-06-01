@@ -1,6 +1,6 @@
 # File Structure Generator
 
-A Nim tool that creates file and folder structures from YAML-like configuration files.
+A simple tool to create a project structure (folders and files) from a given yaml structure. (vibe-coded)
 
 ## Features
 
