@@ -206,10 +206,3 @@ MIT License - see LICENSE file for details.
   - Command line interface
   - Dry-run mode
 
-## Roadmap
-
-- [ ] Template support (insert content into created files)
-- [ ] Variable substitution
-- [ ] Configuration file support
-- [ ] Integration with popular project generators
-- [ ] GUI version
