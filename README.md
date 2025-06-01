@@ -198,11 +198,3 @@ nim c -d:release --opt:size src/structgen.nim
 
 MIT License - see LICENSE file for details.
 
-## Version History
-
-- **v1.0.0**: Initial release
-  - Basic file/folder creation
-  - YAML-like syntax support
-  - Command line interface
-  - Dry-run mode
-
