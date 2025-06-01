@@ -1,4 +1,4 @@
-import std/[os, strutils, sequtils, tables, parseopt]
+import std/[os, strutils, sequtils, parseopt]
 
 type
   StructNode = ref object
@@ -10,7 +10,7 @@ type
 proc newStructNode(name: string, isDir: bool, parent: StructNode = nil): StructNode =
   result = StructNode(name: name, isDir: isDir, parent: parent, children: @[])
 
-proc parseIndentation(line: string): int =
+proc parseIndentation*(line: string): int =
   ## Count leading spaces for indentation level
   result = 0
   for c in line:
@@ -19,7 +19,7 @@ proc parseIndentation(line: string): int =
     else:
       break
 
-proc parseLine(line: string): tuple[name: string, isDir: bool, indent: int] =
+proc parseLine*(line: string): tuple[name: string, isDir: bool, indent: int] =
   ## Parse a single line and extract name, type, and indentation
   let indent = parseIndentation(line)
   let trimmed = line.strip()
@@ -85,7 +85,7 @@ proc createStructure(node: StructNode, basePath: string = "") =
     echo "Creating file: ", fullPath
     # Create parent directories if they don't exist
     let parentDir = fullPath.parentDir()
-    if parentDir.len > 0 and not existsDir(parentDir):
+    if parentDir.len > 0 and not dirExists(parentDir):
       createDir(parentDir)
     
     # Create empty file
@@ -176,7 +176,7 @@ proc main() =
     # Change to output directory
     let originalDir = getCurrentDir()
     if outputDir != originalDir:
-      if not existsDir(outputDir):
+      if not dirExists(outputDir):
         createDir(outputDir)
       setCurrentDir(outputDir)
     

@@ -1,45 +1,15 @@
-import std/[unittest, os, strutils]
-
-# We'll import our main module for testing
-# Note: In a real project, you'd want to separate the logic into modules
-# and test those modules individually
+import std/[unittest, os]
+import ../src/procture
 
 suite "File Structure Generator Tests":
   
   test "parseIndentation":
-    proc parseIndentation(line: string): int =
-      result = 0
-      for c in line:
-        if c == ' ':
-          inc result
-        else:
-          break
-    
     check parseIndentation("  hello") == 2
     check parseIndentation("    world") == 4
     check parseIndentation("no_indent") == 0
     check parseIndentation("") == 0
   
   test "parseLine":
-    proc parseLine(line: string): tuple[name: string, isDir: bool, indent: int] =
-      let indent = parseIndentation(line)
-      let trimmed = line.strip()
-      
-      if trimmed.endsWith(":"):
-        result = (trimmed[0..^2], true, indent)
-      elif trimmed.startsWith("- "):
-        result = (trimmed[2..^1], false, indent)
-      else:
-        result = (trimmed, true, indent)
-    
-    proc parseIndentation(line: string): int =
-      result = 0
-      for c in line:
-        if c == ' ':
-          inc result
-        else:
-          break
-    
     let (name1, isDir1, indent1) = parseLine("  folder:")
     check name1 == "folder"
     check isDir1 == true
@@ -57,25 +27,6 @@ suite "File Structure Generator Tests":
 
   test "file extension handling":
     # Test that files without extensions are handled correctly
-    proc parseLine(line: string): tuple[name: string, isDir: bool, indent: int] =
-      let indent = parseIndentation(line)
-      let trimmed = line.strip()
-      
-      if trimmed.endsWith(":"):
-        result = (trimmed[0..^2], true, indent)
-      elif trimmed.startsWith("- "):
-        result = (trimmed[2..^1], false, indent)
-      else:
-        result = (trimmed, true, indent)
-    
-    proc parseIndentation(line: string): int =
-      result = 0
-      for c in line:
-        if c == ' ':
-          inc result
-        else:
-          break
-    
     let (name1, isDir1, _) = parseLine("  - executable")
     check name1 == "executable"
     check isDir1 == false
@@ -89,14 +40,14 @@ suite "Integration Tests":
   setup:
     # Create a temporary directory for tests
     let testDir = "test_output"
-    if existsDir(testDir):
+    if dirExists(testDir):
       removeDir(testDir)
     createDir(testDir)
   
   teardown:
     # Clean up test directory
     let testDir = "test_output"
-    if existsDir(testDir):
+    if dirExists(testDir):
       removeDir(testDir)
   
   test "create simple structure":
